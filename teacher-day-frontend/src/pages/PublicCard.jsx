@@ -5,8 +5,7 @@ import { eventICS, getCard, recordScan } from '../services/api'
 
 export default function PublicCard() {
   const { slug } = useParams(); const [card, setCard] = useState(null); const [error, setError] = useState(false); const [loading, setLoading] = useState(true); const [reminder, setReminder] = useState(false); const [typedMessage, setTypedMessage] = useState('')
-  const autoDownloadCalendar = () => { if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || sessionStorage.getItem(`teacher-day-calendar-${slug}`)) return; sessionStorage.setItem(`teacher-day-calendar-${slug}`, 'started'); const link = document.createElement('a'); link.href = eventICS(); link.download = 'teachers-day.ics'; document.body.appendChild(link); link.click(); link.remove() }
-  const load = () => { setLoading(true); getCard(slug).then(({ data }) => { setCard(data); return recordScan(slug, Intl.DateTimeFormat().resolvedOptions().timeZone) }).then(() => { setLoading(false); window.setTimeout(() => { setReminder(true); autoDownloadCalendar() }, 700) }).catch(() => { setError(true); setLoading(false) }) }
+  const load = () => { setLoading(true); getCard(slug).then(({ data }) => { setCard(data); return recordScan(slug, Intl.DateTimeFormat().resolvedOptions().timeZone) }).then(() => setLoading(false)).catch(() => { setError(true); setLoading(false) }) }
   useEffect(load, [slug])
   useEffect(() => {
     if (!card) return undefined
