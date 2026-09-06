@@ -13,6 +13,11 @@ def create_app(config_class=Config):
     cors.init_app(app, resources={r'/api/*': {'origins': app.config['FRONTEND_URL']}})
     from app.routes import api
     app.register_blueprint(api, url_prefix='/api')
+
+    @app.get('/')
+    def health_check():
+        return {'status': 'ok', 'service': "Teacher's Day API"}
+
     with app.app_context():
         db.create_all()
         ensure_photo_position_column()
