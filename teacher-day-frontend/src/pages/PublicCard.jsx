@@ -9,7 +9,7 @@ export default function PublicCard() {
   useEffect(load, [slug])
   useEffect(() => {
     if (!card || !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return undefined
-    const timer = window.setTimeout(() => setReminder(true), 10000)
+    const timer = window.setTimeout(() => setReminder(true), 5000)
     return () => window.clearTimeout(timer)
   }, [card])
   useEffect(() => {
