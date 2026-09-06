@@ -8,6 +8,11 @@ export default function PublicCard() {
   const load = () => { setLoading(true); getCard(slug).then(({ data }) => { setCard(data); return recordScan(slug, Intl.DateTimeFormat().resolvedOptions().timeZone) }).then(() => setLoading(false)).catch(() => { setError(true); setLoading(false) }) }
   useEffect(load, [slug])
   useEffect(() => {
+    if (!card || !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return undefined
+    const timer = window.setTimeout(() => setReminder(true), 10000)
+    return () => window.clearTimeout(timer)
+  }, [card])
+  useEffect(() => {
     if (!card) return undefined
     const message = card.personal_message || ''
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setTypedMessage(message); return undefined }
