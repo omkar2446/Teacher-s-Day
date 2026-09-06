@@ -33,6 +33,7 @@
 .qr-panel{text-align:center}
 .qr-panel canvas{max-width:100%;height:auto;margin:16px auto}
 .qr-panel .tile-actions{justify-content:center}
+.reminder-sheet{position:fixed!important;top:50%!important;bottom:auto!important;left:50%!important;right:auto!important;transform:translate(-50%,-50%)!important;width:calc(100vw - 32px)!important;max-width:390px;max-height:calc(100dvh - 32px);overflow:auto}
 .public-shell.is-open{padding:0;place-items:stretch}
 .public-shell.is-open:before,.public-shell.is-open:after{display:none}
 .public-shell.is-open .greeting-card{width:100%;min-height:100dvh;border:0;border-radius:0;box-shadow:none}
