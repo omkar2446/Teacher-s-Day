@@ -1,0 +1,41 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Flask local data and uploaded development media
+*.db
+*.sqlite
+*.sqlite3
+teacher-day-backend/app/static/uploads/*
+
+# Node and frontend build output
+node_modules/
+dist/
+.vite/
+
+# Logs
+*.log
+
+# Editors and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test and temporary files
+.pytest_cache/
+coverage/
+tmp/
+temp/

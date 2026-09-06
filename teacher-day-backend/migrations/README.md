@@ -1,0 +1,1 @@
+Initialize migrations with `flask --app run.py db init`, then `flask --app run.py db migrate -m "initial schema"` and `flask --app run.py db upgrade` when deploying with PostgreSQL. The app also creates tables on first startup for local development.
