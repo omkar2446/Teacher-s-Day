@@ -10,7 +10,8 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
     db.init_app(app); migrate.init_app(app, db); jwt.init_app(app)
-    cors.init_app(app, resources={r'/api/*': {'origins': app.config['FRONTEND_URL']}})
+    allowed_origins = {app.config['FRONTEND_URL'], 'https://teacher-s-day-xi.vercel.app'}
+    cors.init_app(app, resources={r'/api/*': {'origins': list(allowed_origins)}})
     from app.routes import api
     app.register_blueprint(api, url_prefix='/api')
 
